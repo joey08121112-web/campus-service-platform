@@ -1,0 +1,81 @@
+<view class="page">
+  <!-- 商家信息头部 -->
+  <view class="merchant-header">
+    <view class="merchant-avatar">
+      <text class="merchant-initial">{{merchant.name ? merchant.name[0] : ''}}</text>
+    </view>
+    <view class="merchant-meta">
+      <text class="merchant-name">{{merchant.name}}</text>
+      <view class="merchant-status">
+        <view class="status-dot"></view>
+        <text class="status-text">{{merchant.area}} · 营业中</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 菜品列表 -->
+  <view class="product-list">
+    <view
+      class="product-card"
+      wx:for="{{products}}"
+      wx:key="id"
+      hover-class="product-card-hover"
+    >
+      <view class="product-img" style="background: {{item.imgBg}};">
+        <text class="product-emoji">{{item.emoji}}</text>
+      </view>
+      <view class="product-info">
+        <text class="product-name">{{item.name}}</text>
+        <text class="product-desc">{{item.description || '美味推荐'}}</text>
+        <view class="product-bottom">
+          <view class="price-row">
+            <text class="price-symbol">¥</text>
+            <text class="price-value">{{item.price}}</text>
+          </view>
+          <view class="quantity-ctrl">
+            <view
+              class="ctrl-btn minus {{item.quantity > 0 ? 'visible' : ''}}"
+              bindtap="minusFromCart"
+              data-id="{{item.id}}"
+              wx:if="{{item.quantity > 0}}"
+            >
+              <text class="ctrl-icon">−</text>
+            </view>
+            <text class="quantity {{item.quantity > 0 ? 'visible' : ''}}" wx:if="{{item.quantity > 0}}">{{item.quantity}}</text>
+            <view
+              class="ctrl-btn plus"
+              bindtap="addToCart"
+              data-id="{{item.id}}"
+            >
+              <text class="ctrl-icon">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{products.length === 0 && !loading}}">
+    <text class="empty-icon">🍽️</text>
+    <text class="empty-text">暂无菜品</text>
+  </view>
+
+  <!-- 底部购物车栏 -->
+  <view class="cart-bar" wx:if="{{totalCount > 0}}">
+    <view class="cart-left">
+      <view class="cart-icon-wrap">
+        <text class="cart-icon">🛒</text>
+        <view class="cart-badge">{{totalCount}}</view>
+      </view>
+      <view class="cart-price">
+        <text class="cart-total-symbol">¥</text>
+        <text class="cart-total-value">{{totalAmount}}</text>
+        <text class="cart-count-label">共 {{totalCount}} 件</text>
+      </view>
+    </view>
+    <view class="cart-btn" bindtap="goToCart" hover-class="cart-btn-hover">
+      <text class="cart-btn-text">去结算</text>
+    </view>
+  </view>
+</view>

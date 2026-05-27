@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="tabs">
+    <view class="tab {{currentTab === 'pending' ? 'active' : ''}}" bindtap="switchTab" data-tab="pending">待接单</view>
+    <view class="tab {{currentTab === 'my' ? 'active' : ''}}" bindtap="switchTab" data-tab="my">我的订单</view>
+  </view>
+
+  <view class="order-list">
+    <view class="order-card" wx:for="{{orders}}" wx:key="id">
+      <view class="order-header">
+        <view class="route-info">
+          <text class="route-from">{{item.from_location}}</text>
+          <text class="route-arrow">→</text>
+          <text class="route-to">{{item.to_location}}</text>
+        </view>
+        <text class="order-status {{item.statusClass}}">{{item.statusText}}</text>
+      </view>
+      <view class="order-info">
+        <view class="info-row"><text class="info-label">🧳 行李</text><text class="info-value">{{item.luggage_count}}件 {{item.luggage_desc}}</text></view>
+        <view class="info-row" wx:if="{{item.expect_time}}"><text class="info-label">⏰ 时间</text><text class="info-value">{{item.expect_time}}</text></view>
+      </view>
+      <view class="order-footer">
+        <text class="order-fee">¥{{item.delivery_fee}}</text>
+        <view class="order-btn" wx:if="{{item.status === 0 && currentTab === 'pending'}}" bindtap="acceptOrder" data-id="{{item.id}}" hover-class="order-btn-hover">接单</view>
+        <view class="order-btn complete" wx:if="{{item.status === 1}}" bindtap="completeOrder" data-id="{{item.id}}" hover-class="order-btn-hover">完成</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{orders.length === 0 && !loading}}">
+    <text class="empty-icon">🧳</text>
+    <text class="empty-text">{{currentTab === 'pending' ? '暂无搬运需求' : '暂无订单'}}</text>
+  </view>
+
+  <view class="fab" bindtap="goToPublish" hover-class="fab-hover">
+    <text class="fab-text">+</text>
+    <text class="fab-label">发布需求</text>
+  </view>
+</view>

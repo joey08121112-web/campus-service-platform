@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="order-list">
+    <view class="order-card" wx:for="{{orders}}" wx:key="id">
+      <view class="order-header">
+        <text class="order-no">打印单 #{{item.id}}</text>
+        <text class="order-status {{item.statusClass}}">{{item.statusText}}</text>
+      </view>
+      <view class="order-info">
+        <text class="info-item">📄 {{item.file_name}}</text>
+        <text class="info-item">📝 {{item.pages}}页 · {{item.color_mode === 'bw' ? '黑白' : '彩印'}} · {{item.duplex ? '双面' : '单面'}}</text>
+        <text class="info-item">🏠 {{item.dormitory}}</text>
+      </view>
+      <view class="order-footer">
+        <text class="order-time">{{item.created_at}}</text>
+        <text class="order-price">¥{{item.amount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{orders.length === 0 && !loading}}">
+    <text class="empty-icon">🖨️</text>
+    <text class="empty-text">暂无打印订单</text>
+  </view>
+</view>

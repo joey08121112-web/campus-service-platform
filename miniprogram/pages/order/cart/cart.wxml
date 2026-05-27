@@ -1,0 +1,66 @@
+<view class="page">
+  <!-- 配送信息 -->
+  <view class="section-card">
+    <view class="section-title">
+      <text class="title-icon">📍</text>
+      <text>配送信息</text>
+    </view>
+    <view class="address-form">
+      <view class="form-item">
+        <text class="form-label">宿舍楼</text>
+        <input class="form-input" placeholder="请输入宿舍楼名称" value="{{dormitory}}" bindinput="onInput" data-field="dormitory"/>
+      </view>
+      <view class="form-item">
+        <text class="form-label">房间号</text>
+        <input class="form-input" placeholder="请输入房间号" value="{{room}}" bindinput="onInput" data-field="room"/>
+      </view>
+      <view class="form-item">
+        <text class="form-label">手机号</text>
+        <input class="form-input" placeholder="请输入手机号" type="number" maxlength="11" value="{{phone}}" bindinput="onInput" data-field="phone"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="section-card">
+    <view class="section-title">
+      <text class="title-icon">🛍️</text>
+      <text>{{merchantName}}</text>
+    </view>
+    <view class="product-item" wx:for="{{items}}" wx:key="product_id">
+      <view class="product-img-placeholder">
+        <text class="product-emoji">{{item.emoji}}</text>
+      </view>
+      <view class="product-info">
+        <text class="product-name">{{item.name}}</text>
+        <text class="product-price">¥{{item.price}}</text>
+      </view>
+      <view class="product-right">
+        <text class="product-quantity">x{{item.quantity}}</text>
+        <text class="product-subtotal">¥{{item.subtotal}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view class="section-card">
+    <view class="form-item">
+      <text class="form-label">备注</text>
+      <input class="form-input" placeholder="口味偏好、送达时间等" value="{{remark}}" bindinput="onInput" data-field="remark"/>
+    </view>
+  </view>
+
+  <!-- 底部结算栏 -->
+  <view class="bottom-bar">
+    <view class="price-info">
+      <text class="price-label">合计</text>
+      <view class="price-row">
+        <text class="price-symbol">¥</text>
+        <text class="price-value">{{totalAmount}}</text>
+      </view>
+    </view>
+    <view class="submit-btn" bindtap="submitOrder" hover-class="submit-btn-hover">
+      <text>提交订单</text>
+    </view>
+  </view>
+</view>

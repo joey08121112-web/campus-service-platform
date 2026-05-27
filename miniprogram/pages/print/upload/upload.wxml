@@ -1,0 +1,86 @@
+<view class="page">
+  <!-- 选择宿舍楼 -->
+  <view class="section-card">
+    <view class="section-title">
+      <text class="title-icon">🏠</text>
+      <text>选择打印点</text>
+    </view>
+    <picker bindchange="onDormitoryChange" value="{{dormitoryIndex}}" range="{{dormitories}}">
+      <view class="picker-btn">
+        <text>{{selectedDormitory || '请选择宿舍楼'}}</text>
+        <text class="picker-arrow">›</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 上传文件 -->
+  <view class="section-card">
+    <view class="section-title">
+      <text class="title-icon">📄</text>
+      <text>上传文件</text>
+    </view>
+    <view class="upload-area" bindtap="chooseFile" hover-class="upload-area-hover">
+      <view wx:if="{{!fileName}}" class="upload-placeholder">
+        <text class="upload-icon">+</text>
+        <text class="upload-text">点击上传文件</text>
+        <text class="upload-hint">支持 PDF、Word、图片格式</text>
+      </view>
+      <view wx:else class="upload-file">
+        <text class="file-icon">📎</text>
+        <text class="file-name">{{fileName}}</text>
+        <text class="file-remove" catchtap="removeFile">×</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打印参数 -->
+  <view class="section-card" wx:if="{{fileName}}">
+    <view class="section-title">
+      <text class="title-icon">⚙️</text>
+      <text>打印设置</text>
+    </view>
+    <view class="param-item">
+      <text class="param-label">页数</text>
+      <input class="param-input" type="number" value="{{pages}}" bindinput="onPagesInput" placeholder="请输入页数"/>
+    </view>
+    <view class="param-item">
+      <text class="param-label">颜色</text>
+      <view class="param-options">
+        <view class="option {{colorMode === 'bw' ? 'active' : ''}}" bindtap="setColorMode" data-mode="bw">黑白</view>
+        <view class="option {{colorMode === 'color' ? 'active' : ''}}" bindtap="setColorMode" data-mode="color">彩印</view>
+      </view>
+    </view>
+    <view class="param-item">
+      <text class="param-label">单双面</text>
+      <view class="param-options">
+        <view class="option {{duplex === '0' ? 'active' : ''}}" bindtap="setDuplex" data-duplex="0">单面</view>
+        <view class="option {{duplex === '1' ? 'active' : ''}}" bindtap="setDuplex" data-duplex="1">双面</view>
+      </view>
+    </view>
+    <view class="param-item">
+      <text class="param-label">取件方式</text>
+      <view class="param-options">
+        <view class="option {{pickupType === 'self' ? 'active' : ''}}" bindtap="setPickupType" data-type="self">自取</view>
+        <view class="option {{pickupType === 'delivery' ? 'active' : ''}}" bindtap="setPickupType" data-type="delivery">配送 (+¥1)</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 费用预览 -->
+  <view class="section-card" wx:if="{{fileName && pages > 0}}">
+    <view class="price-preview">
+      <text class="price-label">预估费用</text>
+      <view class="price-row">
+        <text class="price-symbol">¥</text>
+        <text class="price-value">{{estimatedPrice}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <view class="submit-btn {{canSubmit ? '' : 'disabled'}}" bindtap="submitPrintJob" hover-class="submit-btn-hover">
+      <text>提交打印任务</text>
+    </view>
+  </view>
+</view>

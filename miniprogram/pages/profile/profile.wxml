@@ -1,0 +1,71 @@
+<view class="page">
+  <!-- 用户信息 -->
+  <view class="profile-header">
+    <view class="avatar">
+      <text class="avatar-text">{{userInfo.name ? userInfo.name[0] : '?'}}</text>
+    </view>
+    <view class="user-info">
+      <text class="user-name">{{userInfo.name || '未登录'}}</text>
+      <text class="user-detail" wx:if="{{userInfo.student_id}}">学号 {{userInfo.student_id}}</text>
+    </view>
+    <text class="edit-link" bindtap="goToEdit">编辑</text>
+  </view>
+
+  <!-- 订单 -->
+  <view class="section-header">
+    <text class="section-title">我的订单</text>
+  </view>
+
+  <view class="list-group">
+    <view class="list-row" bindtap="goToOrders">
+      <text class="row-icon">📋</text>
+      <view class="list-row-content">
+        <text class="list-row-label">订餐订单</text>
+      </view>
+      <text class="list-row-arrow">›</text>
+    </view>
+    <view class="list-row" bindtap="goToPrintOrders">
+      <text class="row-icon">🖨️</text>
+      <view class="list-row-content">
+        <text class="list-row-label">打印订单</text>
+      </view>
+      <text class="list-row-arrow">›</text>
+    </view>
+    <view class="list-row" bindtap="goToSnackOrders">
+      <text class="row-icon">🍪</text>
+      <view class="list-row-content">
+        <text class="list-row-label">零食订单</text>
+      </view>
+      <text class="list-row-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 更多 -->
+  <view class="section-header">
+    <text class="section-title">更多</text>
+  </view>
+
+  <view class="list-group">
+    <view class="list-row">
+      <text class="row-icon">💬</text>
+      <view class="list-row-content">
+        <text class="list-row-label">意见反馈</text>
+      </view>
+      <text class="list-row-arrow">›</text>
+    </view>
+    <view class="list-row">
+      <text class="row-icon">ℹ️</text>
+      <view class="list-row-content">
+        <text class="list-row-label">关于</text>
+      </view>
+      <text class="list-row-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 退出 -->
+  <view class="logout-btn" bindtap="logout" wx:if="{{userInfo.name}}">
+    <text class="logout-text">退出登录</text>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

@@ -1,0 +1,159 @@
+/* Apple Store 极简风格 */
+
+.page {
+  min-height: 100vh;
+  background: #f5f5f7;
+}
+
+/* Hero */
+.hero {
+  background: #fff;
+  margin: 20rpx 24rpx;
+  border-radius: 24rpx;
+  padding: 52rpx 36rpx;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-size: 22rpx;
+  font-weight: 500;
+  color: #86868b;
+  letter-spacing: 0.5rpx;
+  margin-bottom: 10rpx;
+}
+
+.hero-headline {
+  display: block;
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.8rpx;
+  line-height: 1.15;
+  margin-bottom: 12rpx;
+}
+
+.hero-body {
+  display: block;
+  font-size: 26rpx;
+  color: #86868b;
+  line-height: 1.5;
+}
+
+/* Section */
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 40rpx 32rpx 20rpx;
+}
+
+.section-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.3rpx;
+}
+
+.section-link {
+  font-size: 26rpx;
+  color: #0066cc;
+}
+
+/* 服务网格 — 3列，紧凑 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 16rpx 24rpx;
+  background: #fff;
+  margin: 0 24rpx;
+  border-radius: 20rpx;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28rpx 0;
+}
+
+.grid-item:active {
+  opacity: 0.7;
+}
+
+/* 统一灰色圆角图标 */
+.icon-circle {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 24rpx;
+  background: #e8e8ed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14rpx;
+}
+
+.icon-emoji {
+  font-size: 44rpx;
+}
+
+.grid-label {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #1d1d1f;
+}
+
+/* 推荐横滑 */
+.scroll {
+  white-space: nowrap;
+  padding-left: 24rpx;
+}
+
+.card {
+  display: inline-block;
+  width: 300rpx;
+  margin-right: 16rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.card:active {
+  opacity: 0.95;
+}
+
+.card-img {
+  height: 170rpx;
+  background: #e8e8ed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-emoji {
+  font-size: 64rpx;
+  opacity: 0.7;
+}
+
+.card-body {
+  padding: 18rpx 20rpx;
+}
+
+.card-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 4rpx;
+}
+
+.card-meta {
+  display: block;
+  font-size: 22rpx;
+  color: #86868b;
+}
+
+.safe-bottom {
+  height: 40rpx;
+}

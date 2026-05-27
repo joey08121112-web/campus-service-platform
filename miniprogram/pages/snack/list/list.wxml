@@ -1,0 +1,64 @@
+<view class="page">
+  <!-- 宿舍楼选择 -->
+  <view class="dorm-bar">
+    <picker bindchange="onDormChange" value="{{dormIndex}}" range="{{dormitories}}">
+      <view class="dorm-picker">
+        <text class="dorm-icon">🏠</text>
+        <text class="dorm-name">{{selectedDorm || '选择宿舍楼'}}</text>
+        <text class="dorm-arrow">›</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 零食列表 -->
+  <view class="snack-list" wx:if="{{snacks.length > 0}}">
+    <view class="snack-card" wx:for="{{snacks}}" wx:key="id">
+      <view class="snack-img" style="background: {{item.imgBg}};">
+        <text class="snack-emoji">{{item.emoji}}</text>
+        <view class="stock-badge" wx:if="{{item.stock <= 5 && item.stock > 0}}">仅剩{{item.stock}}件</view>
+        <view class="sold-out" wx:if="{{item.stock <= 0}}">已售罄</view>
+      </view>
+      <view class="snack-info">
+        <text class="snack-name">{{item.name}}</text>
+        <text class="snack-desc">{{item.description || '美味零食'}}</text>
+        <view class="snack-bottom">
+          <view class="price-row">
+            <text class="price-symbol">¥</text>
+            <text class="price-value">{{item.price}}</text>
+          </view>
+          <view class="quantity-ctrl" wx:if="{{item.stock > 0}}">
+            <view class="ctrl-btn minus" wx:if="{{item.quantity > 0}}" bindtap="minusFromCart" data-id="{{item.id}}">
+              <text>−</text>
+            </view>
+            <text class="quantity" wx:if="{{item.quantity > 0}}">{{item.quantity}}</text>
+            <view class="ctrl-btn plus" bindtap="addToCart" data-id="{{item.id}}">
+              <text>+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{snacks.length === 0 && !loading}}">
+    <text class="empty-icon">🍪</text>
+    <text class="empty-text">{{selectedDorm ? '该宿舍楼暂无零食' : '请先选择宿舍楼'}}</text>
+  </view>
+
+  <!-- 底部购物车 -->
+  <view class="cart-bar" wx:if="{{totalCount > 0}}">
+    <view class="cart-left">
+      <view class="cart-icon-wrap">
+        <text>🛒</text>
+        <view class="cart-badge">{{totalCount}}</view>
+      </view>
+      <view class="cart-price">
+        <text class="cart-total-symbol">¥</text>
+        <text class="cart-total-value">{{totalAmount}}</text>
+      </view>
+    </view>
+    <view class="cart-btn" bindtap="goToCart" hover-class="cart-btn-hover">
+      <text>去结算</text>
+    </view>
+  </view>
+</view>

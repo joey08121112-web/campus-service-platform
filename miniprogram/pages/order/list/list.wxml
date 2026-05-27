@@ -1,0 +1,81 @@
+<view class="page">
+  <!-- 顶部渐变区域 -->
+  <view class="header">
+    <text class="header-title">订餐</text>
+    <text class="header-subtitle">发现校园美食</text>
+  </view>
+
+  <!-- 分类标签 -->
+  <scroll-view class="tabs-scroll" scroll-x enable-flex>
+    <view class="tabs">
+      <view
+        class="tab {{currentArea === 'all' ? 'active' : ''}}"
+        bindtap="switchArea"
+        data-area="all"
+      >全部</view>
+      <view
+        class="tab {{currentArea === '一食堂' ? 'active' : ''}}"
+        bindtap="switchArea"
+        data-area="一食堂"
+      >一食堂</view>
+      <view
+        class="tab {{currentArea === '二食堂' ? 'active' : ''}}"
+        bindtap="switchArea"
+        data-area="二食堂"
+      >二食堂</view>
+      <view
+        class="tab {{currentArea === '南商业街' ? 'active' : ''}}"
+        bindtap="switchArea"
+        data-area="南商业街"
+      >南商业街</view>
+      <view
+        class="tab {{currentArea === '北商业街' ? 'active' : ''}}"
+        bindtap="switchArea"
+        data-area="北商业街"
+      >北商业街</view>
+      <view
+        class="tab {{currentArea === '生活超市' ? 'active' : ''}}"
+        bindtap="switchArea"
+        data-area="生活超市"
+      >生活超市</view>
+    </view>
+  </scroll-view>
+
+  <!-- 商家列表 -->
+  <view class="merchant-list">
+    <view
+      class="merchant-card"
+      wx:for="{{merchants}}"
+      wx:key="id"
+      bindtap="goToMenu"
+      data-id="{{item.id}}"
+      hover-class="merchant-card-hover"
+    >
+      <view class="merchant-avatar" style="background: {{item.avatarBg}};">
+        <text class="merchant-initial">{{item.name[0]}}</text>
+      </view>
+      <view class="merchant-info">
+        <text class="merchant-name">{{item.name}}</text>
+        <text class="merchant-area">{{item.area}}</text>
+        <view class="merchant-tags">
+          <view class="tag" wx:if="{{item.tag}}" style="background: {{item.tagBg}}; color: {{item.tagColor}};">{{item.tag}}</view>
+          <text class="sales">月售 {{item.sales || 0}}</text>
+        </view>
+      </view>
+      <view class="merchant-arrow">
+        <text class="arrow-text">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{merchants.length === 0 && !loading}}">
+    <text class="empty-icon">🍽️</text>
+    <text class="empty-text">暂无商家</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text class="loading-text">加载中...</text>
+  </view>
+</view>

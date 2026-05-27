@@ -1,0 +1,50 @@
+<view class="page">
+  <view class="section-card">
+    <view class="section-title"><text class="title-icon">🏠</text><text>搬运路线</text></view>
+    <view class="form-item">
+      <text class="form-label">出发地</text>
+      <input class="form-input" placeholder="宿舍楼名称 + 房间号" value="{{fromLocation}}" bindinput="onInput" data-field="fromLocation"/>
+    </view>
+    <view class="route-arrow">
+      <text>↓</text>
+    </view>
+    <view class="form-item">
+      <text class="form-label">目的地</text>
+      <input class="form-input" placeholder="目标宿舍楼 + 房间号或校门口" value="{{toLocation}}" bindinput="onInput" data-field="toLocation"/>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title"><text class="title-icon">🧳</text><text>行李信息</text></view>
+    <view class="form-item">
+      <text class="form-label">行李件数</text>
+      <view class="count-ctrl">
+        <view class="ctrl-btn" bindtap="minusCount">−</view>
+        <text class="count-value">{{luggageCount}}</text>
+        <view class="ctrl-btn" bindtap="addCount">+</view>
+      </view>
+    </view>
+    <view class="form-item">
+      <text class="form-label">大致描述</text>
+      <input class="form-input" placeholder="如：2个行李箱+1个书包" value="{{luggageDesc}}" bindinput="onInput" data-field="luggageDesc"/>
+    </view>
+    <view class="form-item">
+      <text class="form-label">期望时间</text>
+      <input class="form-input" placeholder="如：今天下午3点" value="{{expectTime}}" bindinput="onInput" data-field="expectTime"/>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-title"><text class="title-icon">💰</text><text>搬运费用</text></view>
+    <view class="fee-hint">
+      <text>参考价格: <text class="fee-highlight">¥{{suggestedPrice}}</text></text>
+    </view>
+    <view class="fee-options">
+      <view class="fee-item {{deliveryFee === item ? 'active' : ''}}" wx:for="{{feeOptions}}" wx:key="*this" bindtap="setFee" data-fee="{{item}}">¥{{item}}</view>
+    </view>
+  </view>
+
+  <view class="submit-btn" bindtap="submitOrder" hover-class="submit-btn-hover">
+    <text>发布搬运需求</text>
+  </view>
+</view>

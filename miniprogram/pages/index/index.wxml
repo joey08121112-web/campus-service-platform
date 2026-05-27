@@ -1,0 +1,90 @@
+<view class="page">
+  <!-- Hero -->
+  <view class="hero">
+    <text class="hero-eyebrow">校园综合服务</text>
+    <text class="hero-headline">一站式校园生活平台</text>
+    <text class="hero-body">订餐、打印、零食、代取、快递、搬运</text>
+  </view>
+
+  <!-- 服务入口 -->
+  <view class="section">
+    <text class="section-title">服务</text>
+  </view>
+
+  <view class="grid">
+    <view class="grid-item" bindtap="goToOrder">
+      <view class="icon-circle">
+      <text class="icon-emoji">🍜</text>
+      </view>
+      <text class="grid-label">订餐</text>
+    </view>
+    <view class="grid-item" bindtap="goToPrint">
+      <view class="icon-circle">
+      <text class="icon-emoji">🖨️</text>
+      </view>
+      <text class="grid-label">打印</text>
+    </view>
+    <view class="grid-item" bindtap="goToSnack">
+      <view class="icon-circle">
+      <text class="icon-emoji">🍪</text>
+      </view>
+      <text class="grid-label">零食</text>
+    </view>
+    <view class="grid-item" bindtap="goToTakeout">
+      <view class="icon-circle">
+      <text class="icon-emoji">🛵</text>
+      </view>
+      <text class="grid-label">代取</text>
+    </view>
+    <view class="grid-item" bindtap="goToExpress">
+      <view class="icon-circle">
+      <text class="icon-emoji">📦</text>
+      </view>
+      <text class="grid-label">快递</text>
+    </view>
+    <view class="grid-item" bindtap="goToMoving">
+      <view class="icon-circle">
+      <text class="icon-emoji">🧳</text>
+      </view>
+      <text class="grid-label">搬运</text>
+    </view>
+  </view>
+
+  <!-- 推荐 -->
+  <view class="section">
+    <text class="section-title">推荐商家</text>
+    <text class="section-link" bindtap="goToOrder">查看全部</text>
+  </view>
+
+  <scroll-view class="scroll" scroll-x>
+    <view class="card" bindtap="goToOrder">
+      <view class="card-img">
+        <text class="card-emoji">🍜</text>
+      </view>
+      <view class="card-body">
+        <text class="card-title">川味窗口</text>
+        <text class="card-meta">一食堂 · 月售328</text>
+      </view>
+    </view>
+    <view class="card" bindtap="goToOrder">
+      <view class="card-img">
+        <text class="card-emoji">🥤</text>
+      </view>
+      <view class="card-body">
+        <text class="card-title">蜜雪冰城</text>
+        <text class="card-meta">南商业街 · 月售512</text>
+      </view>
+    </view>
+    <view class="card" bindtap="goToOrder">
+      <view class="card-img">
+        <text class="card-emoji">🍚</text>
+      </view>
+      <view class="card-body">
+        <text class="card-title">兰州拉面</text>
+        <text class="card-meta">二食堂 · 月售198</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="safe-bottom"></view>
+</view>
