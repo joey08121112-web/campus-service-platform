@@ -48,6 +48,24 @@
       </view>
       <text class="grid-label">搬运</text>
     </view>
+    <view class="grid-item" bindtap="goToIdle">
+      <view class="icon-circle">
+      <text class="icon-emoji">♻️</text>
+      </view>
+      <text class="grid-label">闲置</text>
+    </view>
+    <view class="grid-item" bindtap="goToParttime">
+      <view class="icon-circle">
+      <text class="icon-emoji">💼</text>
+      </view>
+      <text class="grid-label">兼职</text>
+    </view>
+    <view class="grid-item" bindtap="goToMerchant">
+      <view class="icon-circle">
+      <text class="icon-emoji">🏪</text>
+      </view>
+      <text class="grid-label">商家</text>
+    </view>
   </view>
 
   <!-- 推荐 -->

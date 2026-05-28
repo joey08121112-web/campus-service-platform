@@ -1,0 +1,17 @@
+<view class="page">
+  <view class="header">
+    <text class="title">商家登录</text>
+    <text class="subtitle">管理您的店铺</text>
+  </view>
+  <view class="form-card">
+    <view class="input-row">
+      <text class="label">用户名</text>
+      <input class="input" placeholder="请输入用户名" value="{{username}}" bindinput="onInput" data-field="username"/>
+    </view>
+    <view class="input-row">
+      <text class="label">密码</text>
+      <input class="input" placeholder="请输入密码" password value="{{password}}" bindinput="onInput" data-field="password"/>
+    </view>
+  </view>
+  <view class="btn" bindtap="login"><text>登录</text></view>
+</view>

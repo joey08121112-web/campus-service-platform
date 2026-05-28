@@ -14,6 +14,14 @@
     "pages/express/list/list",
     "pages/moving/publish/publish",
     "pages/moving/list/list",
+    "pages/idle/publish/publish",
+    "pages/idle/list/list",
+    "pages/parttime/publish/publish",
+    "pages/parttime/list/list",
+    "pages/merchant/login/login",
+    "pages/merchant/index/index",
+    "pages/merchant/products/products",
+    "pages/merchant/orders/orders",
     "pages/profile/profile"
   ],
   "window": {

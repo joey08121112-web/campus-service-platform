@@ -1,0 +1,21 @@
+<view class="page">
+  <view class="form-card">
+    <view class="input-row"><text class="label">标题</text><input class="input" placeholder="兼职标题" value="{{title}}" bindinput="onInput" data-field="title"/></view>
+    <view class="input-row"><text class="label">描述</text><input class="input" placeholder="工作内容描述" value="{{description}}" bindinput="onInput" data-field="description"/></view>
+    <view class="input-row"><text class="label">地点</text><input class="input" placeholder="工作地点" value="{{location}}" bindinput="onInput" data-field="location"/></view>
+    <view class="input-row"><text class="label">薪资</text><input class="input" placeholder="如：15元/小时" value="{{salary}}" bindinput="onInput" data-field="salary"/></view>
+    <view class="input-row"><text class="label">时间</text><input class="input" placeholder="工作时间段" value="{{work_time}}" bindinput="onInput" data-field="work_time"/></view>
+    <view class="input-row"><text class="label">人数</text><input class="input" placeholder="招募人数" type="number" value="{{headcount}}" bindinput="onInput" data-field="headcount"/></view>
+  </view>
+  <view class="form-card">
+    <view class="input-row">
+      <text class="label">类型</text>
+      <view class="chips">
+        <view class="chip {{job_type==='按小时'?'active':''}}" bindtap="setType" data-v="按小时">按小时</view>
+        <view class="chip {{job_type==='按单'?'active':''}}" bindtap="setType" data-v="按单">按单</view>
+        <view class="chip {{job_type==='按天'?'active':''}}" bindtap="setType" data-v="按天">按天</view>
+      </view>
+    </view>
+  </view>
+  <view class="btn" bindtap="submit"><text>发布</text></view>
+</view>

@@ -1,0 +1,2 @@
+const{request}=require('../../../utils/request');
+Page({data:{merchant:{},dashboard:{today:{count:0,amount:0},pendingOrders:0,activeProducts:0}},onLoad(){const info=wx.getStorageSync('merchantInfo');if(info)this.setData({merchant:info});this.loadDashboard()},async loadDashboard(){try{const res=await request('/merchant/auth/dashboard','GET',{},true);this.setData({dashboard:res})}catch(err){console.error(err)}},goToOrders(){wx.navigateTo({url:'/pages/merchant/orders/orders'})},goToProducts(){wx.navigateTo({url:'/pages/merchant/products/products'})}});

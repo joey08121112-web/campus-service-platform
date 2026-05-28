@@ -42,6 +42,21 @@ app.use('/api/express', expressRoutes);
 const movingRoutes = require('./routes/moving');
 app.use('/api/moving', movingRoutes);
 
+const merchantAuthRoutes = require('./routes/merchantAuth');
+app.use('/api/merchant/auth', merchantAuthRoutes);
+
+const productManageRoutes = require('./routes/productManage');
+app.use('/api/merchant/products', productManageRoutes);
+
+const orderManageRoutes = require('./routes/orderManage');
+app.use('/api/merchant/orders', orderManageRoutes);
+
+const idleRoutes = require('./routes/idle');
+app.use('/api/idle', idleRoutes);
+
+const parttimeRoutes = require('./routes/parttime');
+app.use('/api/parttime', parttimeRoutes);
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

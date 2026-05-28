@@ -1,0 +1,28 @@
+<view class="page">
+  <view class="form-card">
+    <view class="input-row"><text class="label">标题</text><input class="input" placeholder="商品标题" value="{{title}}" bindinput="onInput" data-field="title"/></view>
+    <view class="input-row"><text class="label">描述</text><input class="input" placeholder="商品描述" value="{{description}}" bindinput="onInput" data-field="description"/></view>
+    <view class="input-row"><text class="label">价格</text><input class="input" placeholder="¥" type="digit" value="{{price}}" bindinput="onInput" data-field="price"/></view>
+  </view>
+  <view class="form-card">
+    <view class="input-row">
+      <text class="label">成色</text>
+      <view class="chips">
+        <view class="chip {{condition==='全新'?'active':''}}" bindtap="setCond" data-v="全新">全新</view>
+        <view class="chip {{condition==='九成新'?'active':''}}" bindtap="setCond" data-v="九成新">九成新</view>
+        <view class="chip {{condition==='八成新'?'active':''}}" bindtap="setCond" data-v="八成新">八成新</view>
+        <view class="chip {{condition==='一般'?'active':''}}" bindtap="setCond" data-v="一般">一般</view>
+      </view>
+    </view>
+    <view class="input-row">
+      <text class="label">分类</text>
+      <view class="chips">
+        <view class="chip {{category==='数码'?'active':''}}" bindtap="setCat" data-v="数码">数码</view>
+        <view class="chip {{category==='书籍'?'active':''}}" bindtap="setCat" data-v="书籍">书籍</view>
+        <view class="chip {{category==='生活'?'active':''}}" bindtap="setCat" data-v="生活">生活</view>
+        <view class="chip {{category==='服装'?'active':''}}" bindtap="setCat" data-v="服装">服装</view>
+      </view>
+    </view>
+  </view>
+  <view class="btn" bindtap="submit"><text>发布</text></view>
+</view>

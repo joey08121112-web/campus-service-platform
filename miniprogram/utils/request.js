@@ -1,8 +1,8 @@
 const BASE_URL = 'http://localhost:3000/api';
 
-const request = (url, method = 'GET', data = {}) => {
+const request = (url, method = 'GET', data = {}, isMerchant = false) => {
   return new Promise((resolve, reject) => {
-    const token = wx.getStorageSync('token');
+    const token = isMerchant ? wx.getStorageSync('merchantToken') : wx.getStorageSync('token');
     wx.request({
       url: BASE_URL + url,
       method,

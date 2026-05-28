@@ -1,0 +1,2 @@
+const{request}=require('../../../utils/request');
+Page({data:{jobs:[],cat:''},onLoad(){this.load()},onShow(){this.load()},setCat(e){this.setData({cat:e.currentTarget.dataset.v});this.load()},async load(){try{const url=this.data.cat?`/parttime?job_type=${this.data.cat}`:'/parttime';const jobs=await request(url);this.setData({jobs})}catch(err){console.error(err)}},goDetail(e){wx.navigateTo({url:`/pages/parttime/detail/detail?id=${e.currentTarget.dataset.id}`})},goPublish(){wx.navigateTo({url:'/pages/parttime/publish/publish'})}});

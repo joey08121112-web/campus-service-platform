@@ -16,5 +16,14 @@ Page({
   },
   goToMoving() {
     wx.navigateTo({ url: '/pages/moving/list/list' });
+  },
+  goToIdle() {
+    wx.navigateTo({ url: '/pages/idle/list/list' });
+  },
+  goToParttime() {
+    wx.navigateTo({ url: '/pages/parttime/list/list' });
+  },
+  goToMerchant() {
+    wx.navigateTo({ url: '/pages/merchant/login/login' });
   }
 });

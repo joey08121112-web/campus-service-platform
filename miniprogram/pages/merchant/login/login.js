@@ -1,0 +1,2 @@
+const{request}=require('../../../utils/request');
+Page({data:{username:'',password:''},onInput(e){this.setData({[e.currentTarget.dataset.field]:e.detail.value})},async login(){const{username,password}=this.data;if(!username||!password){wx.showToast({title:'请输入账号密码',icon:'none'});return}try{const res=await request('/merchant/auth/login','POST',{username,password});wx.setStorageSync('merchantToken',res.token);wx.setStorageSync('merchantInfo',res.merchant);wx.redirectTo({url:'/pages/merchant/index/index'})}catch(err){wx.showToast({title:'登录失败',icon:'none'})}}});

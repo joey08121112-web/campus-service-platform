@@ -1,0 +1,2 @@
+const{request}=require('../../../utils/request');
+Page({data:{items:[],cat:''},onLoad(){this.load()},onShow(){this.load()},setCat(e){this.setData({cat:e.currentTarget.dataset.v});this.load()},async load(){try{const url=this.data.cat?`/idle?category=${this.data.cat}`:'/idle';const items=await request(url);this.setData({items})}catch(err){console.error(err)}},goDetail(e){wx.navigateTo({url:`/pages/idle/detail/detail?id=${e.currentTarget.dataset.id}`})},goPublish(){wx.navigateTo({url:'/pages/idle/publish/publish'})}});

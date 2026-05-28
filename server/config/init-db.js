@@ -152,6 +152,52 @@ const createTables = async () => {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (publisher_id) REFERENCES users(id),
       FOREIGN KEY (worker_id) REFERENCES users(id)
+    )`,
+    `CREATE TABLE IF NOT EXISTS merchant_users (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      merchant_id INT,
+      username VARCHAR(50) UNIQUE,
+      password VARCHAR(100),
+      status TINYINT DEFAULT 1,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (merchant_id) REFERENCES merchants(id)
+    )`,
+    `CREATE TABLE IF NOT EXISTS idle_items (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      user_id INT,
+      title VARCHAR(100),
+      description TEXT,
+      price DECIMAL(10,2),
+      images TEXT,
+      condition VARCHAR(20),
+      category VARCHAR(50),
+      status TINYINT DEFAULT 1,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    )`,
+    `CREATE TABLE IF NOT EXISTS parttime_jobs (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      publisher_id INT,
+      title VARCHAR(100),
+      description TEXT,
+      job_type VARCHAR(50),
+      location VARCHAR(100),
+      salary VARCHAR(50),
+      salary_type VARCHAR(20),
+      work_time VARCHAR(100),
+      headcount INT DEFAULT 1,
+      status TINYINT DEFAULT 1,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (publisher_id) REFERENCES users(id)
+    )`,
+    `CREATE TABLE IF NOT EXISTS parttime_applications (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      job_id INT,
+      user_id INT,
+      status TINYINT DEFAULT 0,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (job_id) REFERENCES parttime_jobs(id),
+      FOREIGN KEY (user_id) REFERENCES users(id)
     )`
   ];
 

@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="cats">
+    <scroll-view scroll-x>
+      <view class="cat {{cat===''?'active':''}}" bindtap="setCat" data-v="">全部</view>
+      <view class="cat {{cat==='按小时'?'active':''}}" bindtap="setCat" data-v="按小时">按小时</view>
+      <view class="cat {{cat==='按单'?'active':''}}" bindtap="setCat" data-v="按单">按单</view>
+      <view class="cat {{cat==='按天'?'active':''}}" bindtap="setCat" data-v="按天">按天</view>
+    </scroll-view>
+  </view>
+  <view class="list">
+    <view class="card" wx:for="{{jobs}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="card-head">
+        <text class="card-title">{{item.title}}</text>
+        <text class="card-salary">{{item.salary}}</text>
+      </view>
+      <text class="card-desc">{{item.description}}</text>
+      <view class="card-foot">
+        <text class="card-loc">📍 {{item.location}}</text>
+        <text class="card-time">⏰ {{item.work_time}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="empty" wx:if="{{jobs.length===0}}"><text>暂无兼职</text></view>
+  <view class="fab" bindtap="goPublish"><text>+</text></view>
+</view>
